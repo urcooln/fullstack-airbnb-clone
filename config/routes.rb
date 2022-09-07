@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     # Add routes below this line
     resources :users, only: [:create]
-    resources :sessions, only: [:create, :destroy]
+    resources :sessions, only: %i[create destroy]
 
     get '/authenticated' => 'sessions#authenticated'
-
   end
-
 end

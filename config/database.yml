@@ -23,5 +23,7 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
-  database: airbnb
+  adapter: postgres
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  url: <%= ENV['DATABASE_URL'] %>

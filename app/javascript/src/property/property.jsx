@@ -46,7 +46,7 @@ class Property extends React.Component {
       user,
     } = property
 
-    const imageUrl = `https://jj-fswd-airbnb-clone-6bde614cb3be.herokuapp.com/${image}`;
+    const imageUrl = `https://jj-fswd-airbnb-clone-6bde614cb3be.herokuapp.com${image}`;
 
 
     return (

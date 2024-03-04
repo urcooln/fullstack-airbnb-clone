@@ -17,23 +17,23 @@ const Layout = (props) => {
   }, []);
 
   const logout = () => {
-    fetch(`/api/sessions/destroy`, safeCredentials( {
+    fetch(`/api/sessions/destroy`, safeCredentials({
       method: 'DELETE',
       credentials: 'include', // Include cookies for session management
     }))
-    .then(response => {
-      if (response.ok) {
-        // Optionally, perform any additional actions upon successful logout
-        // For example, redirect to the login page
-        window.location.href = '/login'; // Redirect to login page
-      } else {
-        // Handle error
-        console.error('Error logging out:', response.statusText);
-      }
-    })
-    .catch(error => {
-      console.error('Error logging out:', error);
-    });
+      .then(response => {
+        if (response.ok) {
+          // Optionally, perform any additional actions upon successful logout
+          // For example, redirect to the login page
+          window.location.href = '/login'; // Redirect to login page
+        } else {
+          // Handle error
+          console.error('Error logging out:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error logging out:', error);
+      });
   };
 
   return (
@@ -52,6 +52,11 @@ const Layout = (props) => {
               <li className="nav-item">
                 <a className="nav-link" href="/bookings">Bookings</a>
               </li>
+              {!authenticated && (
+                <li className="nav-item">
+                  <a className="nav-link" href="/login">Login</a>
+                </li>
+              )}
               {authenticated && (
                 <li className="nav-item">
                   <button className="btn btn-link nav-link" onClick={logout}>Logout</button>

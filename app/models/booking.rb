@@ -13,6 +13,14 @@ class Booking < ApplicationRecord
 
     before_validation :check_availability
 
+    def is_paid?
+        self.charges.pluck(:complete).include?(true)
+    end
+
+    def checkout_session_id
+        charges.last&.checkout_session_id
+    end
+
     private
 
     def check_start_date_smaller_than_end_date
@@ -30,5 +38,9 @@ class Booking < ApplicationRecord
             raise ArguementError.new("Date range overlaps with other bookings")
         end
     end
+
+
+
 end
+
 

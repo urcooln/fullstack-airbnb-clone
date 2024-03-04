@@ -11,4 +11,5 @@ document.addEventListener('DOMContentLoaded', () => {
     <Property property_id={data.property_id} />,
     document.body.appendChild(document.createElement('div')),
   )
+  
 })
